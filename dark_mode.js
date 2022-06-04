@@ -56,6 +56,9 @@ function changeBgColor(flg) {
 
     if (flg) {
         // 背景を暗くする
+        $('.darkMode .darkMode_trigger').css('background-color','white');
+        $('.darkMode .darkMode_trigger .fa-moon').css('display','none');
+        $('.darkMode .darkMode_trigger .fa-lightbulb').css('display','block');
         $('#blog-title-inner').css({'cssText':'background-image :url("' + dark_mode_title_banner + '") !important; background-position: center 0px;'});
         $('#top-box, #content').css('background-color', black);
         $('#recommend-entries').css('background-color', black);
@@ -75,6 +78,9 @@ function changeBgColor(flg) {
         $('.search-form .search-module-input:hover,.search-result-form .search-result-input:hover').css({'cssText':'background-color:'+ grey +' !important;color:'+ white +' !important;'});
     } else {
         // 背景を明るくする
+        $('.darkMode .darkMode_trigger').css('background-color','black');
+        $('.darkMode .darkMode_trigger .fa-moon').css('display','block');
+        $('.darkMode .darkMode_trigger .fa-lightbulb').css('display','none');
         $('#blog-title-inner').css({'cssText':'background-image :url("'+ light_mode_title_banner + '") !important; background-position: center 0px;'});
         $('#top-box, #content').css('background-color', white);
         $('#recommend-entries').css('background-color', white);
