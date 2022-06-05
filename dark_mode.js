@@ -59,7 +59,10 @@ function changeBgColor(flg) {
         $('.darkMode .darkMode_trigger').css('background-color','white');
         $('.darkMode .darkMode_trigger .fa-moon').css('display','none');
         $('.darkMode .darkMode_trigger .fa-lightbulb').css('display','block');
-        $(".darkMode .darkMode_trigger").css('display', 'none');
+        // ボタンを押すと消えるのの対応
+        if($(window).scrollTop() < 500) {
+            $(".darkMode .darkMode_trigger").css('display', 'none');
+        }
         $('#blog-title-inner').css({'cssText':'background-image :url("' + dark_mode_title_banner + '") !important; background-position: center 0px;'});
         $('#top-box, #content').css('background-color', black);
         $('#recommend-entries').css('background-color', black);
@@ -82,7 +85,10 @@ function changeBgColor(flg) {
         $('.darkMode .darkMode_trigger').css('background-color','black');
         $('.darkMode .darkMode_trigger .fa-moon').css('display','block');
         $('.darkMode .darkMode_trigger .fa-lightbulb').css('display','none');
-        $(".darkMode .darkMode_trigger").css('display', 'none');
+        // ボタンを押すと消えるのの対応
+        if($(window).scrollTop() < 500) {
+            $(".darkMode .darkMode_trigger").css('display', 'none');
+        }
         $('#blog-title-inner').css({'cssText':'background-image :url("'+ light_mode_title_banner + '") !important; background-position: center 0px;'});
         $('#top-box, #content').css('background-color', white);
         $('#recommend-entries').css('background-color', white);
