@@ -80,6 +80,8 @@ function changeBgColor(flg) {
         $('#move-page-top:hover').css('color', dark_button_color);
         $('.search-form .search-module-input,.search-result .search-result-input').css({'cssText':'background-color:'+ grey + ' !important;color:'+ white + ' !important;'});
         $('.search-form .search-module-input:hover,.search-result-form .search-result-input:hover').css({'cssText':'background-color:'+ grey +' !important;color:'+ white +' !important;'});
+        $('.entry-comment .comment-user-name').css({'color':white});
+        $('.leave-comment-title').css({'color':white});
     } else {
         // 背景を明るくする
         $('.darkMode .darkMode_trigger').css('background-color','black');
@@ -106,5 +108,7 @@ function changeBgColor(flg) {
         $('#move-page-top:hover').css('color', light_button_color);
         $('.search-form .search-module-input,.search-result .search-result-input').css({'cssText':'background-color:'+ white + ' !important;color:'+ black + ' !important;'});
         $('.search-form .search-module-input:hover,.search-result-form .search-result-input:hover').css({'cssText':'background-color:'+ white +' !important;color:'+ black +' !important;'});
+        $('.entry-comment .comment-user-name').css({'color':black});
+        $('.leave-comment-title').css({'color':black});
     }
 }
