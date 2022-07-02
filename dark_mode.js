@@ -71,6 +71,7 @@ function changeBgColor(flg) {
         $('html').css('background-color', black);
         $('body').css('color', white);
         $('.entry-content .emphasize-link').css('background-color', grey);
+        $('.entry-content .abstract-link').css('background-color', grey);
         $('h1,h2,h3,h4,h5,h6').css('color', white);
         $('.hatena-module-title').css('color', white);
         $('.hatena-module-category ul li a').css({'cssText':'color: '+ white +' !important'});
@@ -99,6 +100,7 @@ function changeBgColor(flg) {
         $('html').css('background-color', white);
         $('body').css('color', black);
         $('.entry-content .emphasize-link').css('background-color', more_read_color);
+        $('.entry-content .abstract-link').css('background-color', more_read_color);
         $('h1,h2,h3,h4,h5,h6').css('color', black);
         $('.hatena-module-title').css('color', black);
         $('.hatena-module-category ul li a').css({'cssText':'color: '+ black +' !important'});
