@@ -68,8 +68,8 @@ function changeBgColor(flg) {
         $('#recommend-entries').css('background-color', black);
         $('.header-image-only #blog-title').css('background-color', black);
         $('#header-ad').css('background-color', black);
-        // $('html').css('background-color', black);
-        // $('body').css('color', white);
+        $('html').css('background-color', black);
+        $('body').css('color', white);
         $('.entry-content .emphasize-link').css('background-color', grey);
         $('.entry-content .abstract-link').css('background-color', grey);
         $('h1,h2,h3,h4,h5,h6').css('color', white);
@@ -83,7 +83,6 @@ function changeBgColor(flg) {
         $('.search-form .search-module-input:hover,.search-result-form .search-result-input:hover').css({'cssText':'background-color:'+ grey +' !important;color:'+ white +' !important;'});
         $('.entry-comment .comment-user-name').css({'color':white});
         $('.leave-comment-title').css({'color':white});
-        $('body').addClass('dark-theme');
     } else {
         // 背景を明るくする
         $('.darkMode .darkMode_trigger').css('background-color','black');
@@ -98,8 +97,8 @@ function changeBgColor(flg) {
         $('#recommend-entries').css('background-color', white);
         $('.header-image-only #blog-title').css('background-color', white);
         $('#header-ad').css('background-color', white);
-        // $('html').css('background-color', white);
-        // $('body').css('color', black);
+        $('html').css('background-color', white);
+        $('body').css('color', black);
         $('.entry-content .emphasize-link').css('background-color', more_read_color);
         $('.entry-content .abstract-link').css('background-color', more_read_color);
         $('h1,h2,h3,h4,h5,h6').css('color', black);
@@ -113,6 +112,5 @@ function changeBgColor(flg) {
         $('.search-form .search-module-input:hover,.search-result-form .search-result-input:hover').css({'cssText':'background-color:'+ white +' !important;color:'+ black +' !important;'});
         $('.entry-comment .comment-user-name').css({'color':black});
         $('.leave-comment-title').css({'color':black});
-        $('body').removeClass('dark-theme');
     }
 }
