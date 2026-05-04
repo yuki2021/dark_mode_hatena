@@ -66,7 +66,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // トリガーボタンのクリックイベント
 document.addEventListener('click', (e) => {
+  console.log('Click detected on:', e.target);
   if (e.target.closest('.darkMode_trigger')) {
+    console.log('Dark mode trigger clicked');
     const current = getColorScheme();
     const newMode = current === 'dark' ? 'light' : 'dark';
     setColorScheme(newMode);
