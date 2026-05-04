@@ -74,3 +74,15 @@ document.addEventListener('click', (e) => {
     setColorScheme(newMode);
   }
 });
+
+// スクロールによるトリガーボタンの表示/非表示
+window.addEventListener('scroll', () => {
+  const trigger = document.querySelector('.darkMode .darkMode_trigger');
+  if (trigger) {
+    if (window.scrollY > 500) {
+      trigger.style.display = 'flex'; // または適切な表示スタイル
+    } else {
+      trigger.style.display = 'none';
+    }
+  }
+});
