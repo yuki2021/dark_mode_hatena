@@ -53,7 +53,7 @@ function toggleDarkMode(isDark) {
   const titleInner = document.getElementById('blog-title-inner');
   if (titleInner) {
     const banner = isDark
-      ? 'https://cdn-ak.f.st-hatena.com/images/fotolife/y/yuki_2021/20220602/20220602202056_original.png'
+      ? 'https://cdn-ak.f.st-hatena.com/images/fotolife/y/yuki_2021/20260504/20260504124016_original.png'
       : 'https://cdn-ak.f.st-hatena.com/images/fotolife/y/yuki_2021/20180613/20180613170013.png';
     titleInner.style.setProperty('background-image', `url("${banner}")`, 'important');
     titleInner.style.setProperty('background-position', 'center 0px', 'important');
