@@ -63,13 +63,19 @@ function toggleDarkMode(isDark) {
 }
 
 function updateThemeColor(isDark) {
+  const color = isDark ? '#1e1e1e' : '#ffffff';
   let meta = document.querySelector('meta[name="theme-color"]');
-  if (!meta) {
+  
+  if (meta) {
+    // 既存のメタタグを更新
+    meta.setAttribute('content', color);
+  } else {
+    // 新規作成
     meta = document.createElement('meta');
     meta.name = 'theme-color';
+    meta.content = color;
     document.head.appendChild(meta);
   }
-  meta.content = isDark ? '#1e1e1e' : '#ffffff';
 }
 
 document.addEventListener('DOMContentLoaded', () => {
