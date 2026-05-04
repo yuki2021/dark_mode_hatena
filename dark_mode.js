@@ -32,6 +32,9 @@ function setColorScheme(type) {
 function toggleDarkMode(isDark) {
   document.body.classList.toggle('dark-mode', isDark);
 
+  // theme-color を更新（iOS Safari 対応）
+  updateThemeColor(isDark);
+
   // トリガーボタンのスタイル変更
   const trigger = document.querySelector('.darkMode .darkMode_trigger');
   if (trigger) {
@@ -57,6 +60,16 @@ function toggleDarkMode(isDark) {
   }
 
   // 他のスタイルはCSSクラス 'dark-mode' で定義されていると仮定
+}
+
+function updateThemeColor(isDark) {
+  let meta = document.querySelector('meta[name="theme-color"]');
+  if (!meta) {
+    meta = document.createElement('meta');
+    meta.name = 'theme-color';
+    document.head.appendChild(meta);
+  }
+  meta.content = isDark ? '#1e1e1e' : '#ffffff';
 }
 
 document.addEventListener('DOMContentLoaded', () => {
