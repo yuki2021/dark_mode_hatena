@@ -15,7 +15,7 @@ class WebStorage {
 }
 
 function getColorScheme() {
-  const storage = new WebStorage('session');
+  const storage = new WebStorage('local');
   const stored = storage.get(COLOR_SCHEME);
   if (stored == null) {
     return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
@@ -24,7 +24,7 @@ function getColorScheme() {
 }
 
 function setColorScheme(type) {
-  const storage = new WebStorage('session');
+  const storage = new WebStorage('local');
   storage.set(COLOR_SCHEME, type);
   toggleDarkMode(type === 'dark');
 }
@@ -81,7 +81,7 @@ function updateThemeColor(isDark) {
 
 // 初期適用（フラッシュ防止：DOMContentLoadedを待たずに即実行）
 ;(function() {
-  var stored = sessionStorage.getItem(COLOR_SCHEME);
+  var stored = localStorage.getItem(COLOR_SCHEME);
   var isDark = stored != null ? stored === 'dark' : window.matchMedia('(prefers-color-scheme: dark)').matches;
   if (isDark) {
     document.documentElement.style.backgroundColor = '#1e1e1e';
@@ -102,6 +102,13 @@ document.addEventListener('click', (e) => {
     const current = getColorScheme();
     const newMode = current === 'dark' ? 'light' : 'dark';
     setColorScheme(newMode);
+  }
+});
+
+// 他タブでの変更をリアルタイム同期
+window.addEventListener('storage', (e) => {
+  if (e.key === COLOR_SCHEME && e.newValue != null) {
+    toggleDarkMode(e.newValue === 'dark');
   }
 });
 
