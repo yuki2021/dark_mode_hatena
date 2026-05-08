@@ -78,6 +78,16 @@ function updateThemeColor(isDark) {
   }
 }
 
+// 初期適用（フラッシュ防止：DOMContentLoadedを待たずに即実行）
+;(function() {
+  var stored = sessionStorage.getItem(COLOR_SCHEME);
+  var isDark = stored != null ? stored === 'dark' : window.matchMedia('(prefers-color-scheme: dark)').matches;
+  if (isDark) {
+    document.documentElement.style.backgroundColor = '#1e1e1e';
+    if (document.body) document.body.classList.add('dark-mode');
+  }
+})();
+
 document.addEventListener('DOMContentLoaded', () => {
   const colorMode = getColorScheme();
   setColorScheme(colorMode);
