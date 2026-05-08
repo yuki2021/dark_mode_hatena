@@ -31,6 +31,7 @@ function setColorScheme(type) {
 
 function toggleDarkMode(isDark) {
   document.body.classList.toggle('dark-mode', isDark);
+  document.documentElement.style.backgroundColor = isDark ? '#1e1e1e' : '';
 
   // theme-color を更新（iOS Safari 対応）
   updateThemeColor(isDark);
