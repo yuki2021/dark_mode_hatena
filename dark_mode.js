@@ -36,17 +36,13 @@ function toggleDarkMode(isDark) {
   // theme-color を更新（iOS Safari 対応）
   updateThemeColor(isDark);
 
-  // トリガーボタンのスタイル変更
+  // アイコン切り替え（背景色は CSS に任せる）
   const trigger = document.querySelector('.darkMode .darkMode_trigger');
   if (trigger) {
     const moon = trigger.querySelector('.fa-moon');
     const bulb = trigger.querySelector('.fa-lightbulb');
     if (moon) moon.style.display = isDark ? 'none' : 'block';
     if (bulb) bulb.style.display = isDark ? 'block' : 'none';
-    // スクロールによる表示/非表示
-    if (window.scrollY < 500) {
-      trigger.style.display = 'none';
-    }
   }
 
   // タイトルバナーの変更
@@ -58,24 +54,29 @@ function toggleDarkMode(isDark) {
     titleInner.style.setProperty('background-image', `url("${banner}")`, 'important');
     titleInner.style.setProperty('background-position', 'center 0px', 'important');
   }
-
-  // 他のスタイルはCSSクラス 'dark-mode' で定義されていると仮定
 }
 
 function updateThemeColor(isDark) {
   const color = isDark ? '#1e1e1e' : '#ffffff';
   let meta = document.querySelector('meta[name="theme-color"]');
-  
+
   if (meta) {
-    // 既存のメタタグを更新
     meta.setAttribute('content', color);
   } else {
-    // 新規作成
     meta = document.createElement('meta');
     meta.name = 'theme-color';
     meta.content = color;
     document.head.appendChild(meta);
   }
+}
+
+// 両ボタンの表示/非表示を同じタイミングで管理
+function updateButtonVisibility() {
+  const trigger = document.querySelector('.darkMode .darkMode_trigger');
+  const pageTop = document.getElementById('page-top');
+  const visible = window.scrollY > 500;
+  if (trigger) trigger.style.display = visible ? 'flex' : 'none';
+  if (pageTop) pageTop.style.display = visible ? 'block' : 'none';
 }
 
 // 初期適用（フラッシュ防止：DOMContentLoadedを待たずに即実行）
@@ -91,13 +92,12 @@ function updateThemeColor(isDark) {
 document.addEventListener('DOMContentLoaded', () => {
   const colorMode = getColorScheme();
   setColorScheme(colorMode);
+  updateButtonVisibility();
 });
 
 // トリガーボタンのクリックイベント
 document.addEventListener('click', (e) => {
-  console.log('Click detected on:', e.target);
   if (e.target.closest('.darkMode_trigger')) {
-    console.log('Dark mode trigger clicked');
     const current = getColorScheme();
     const newMode = current === 'dark' ? 'light' : 'dark';
     setColorScheme(newMode);
@@ -111,14 +111,5 @@ window.addEventListener('storage', (e) => {
   }
 });
 
-// スクロールによるトリガーボタンの表示/非表示
-window.addEventListener('scroll', () => {
-  const trigger = document.querySelector('.darkMode .darkMode_trigger');
-  if (trigger) {
-    if (window.scrollY > 500) {
-      trigger.style.display = 'flex'; // または適切な表示スタイル
-    } else {
-      trigger.style.display = 'none';
-    }
-  }
-});
+// スクロールで両ボタンを同時に表示/非表示
+window.addEventListener('scroll', updateButtonVisibility);
