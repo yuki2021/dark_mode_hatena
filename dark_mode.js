@@ -39,7 +39,6 @@ function toggleDarkMode(isDark) {
   // トリガーボタンのスタイル変更
   const trigger = document.querySelector('.darkMode .darkMode_trigger');
   if (trigger) {
-    trigger.style.backgroundColor = isDark ? 'white' : 'black';
     const moon = trigger.querySelector('.fa-moon');
     const bulb = trigger.querySelector('.fa-lightbulb');
     if (moon) moon.style.display = isDark ? 'none' : 'block';
